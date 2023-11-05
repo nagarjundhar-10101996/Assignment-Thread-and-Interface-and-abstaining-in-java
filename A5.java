@@ -1,3 +1,4 @@
+
 /**
  * Innerinterfaceabstraction
  */
@@ -35,12 +36,11 @@ class Square implements Shape {
     }
     
 }
-
 public class A5 {
     public static void main(String[] args) {
       Rectangle r = new Rectangle( 10.0,20.0);
         Square  s = new Square(10.00);
-        System.out.println(s.getArea());
-        System.out.println(r.getArea());
+        System.out.println("Square of an area : "+s.getArea());
+        System.out.println("Rectangle of an area : "+r.getArea());
     }
 }
