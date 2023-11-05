@@ -18,9 +18,9 @@ A1 : 1
 exit A1
 exit A2
  */
-class A1 extends Thread {
+class S1 extends Thread {
     protected String name ;
-    A1(String c)
+    S1(String c)
     {
         this.name = c;
         this.start();
@@ -28,37 +28,27 @@ class A1 extends Thread {
     }
     public void run()
     {
+        System.out.println("Init Thread "+ this.name);
         try {
-            for (int i = 5; i > 0 ; i--) {
-            System.out.println(name +" : "+ i );
-            sleep(1000);
-            }
-                
-            } catch (InterruptedException e) {
+            System.out.println("Start Thread "+ this.name);
+            sleep(1000);              
+        } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
-                System.out.println("intrrupt " + name);
-            }
-         System.out.println("exit " + name);
-          System.out.printf("Alive %s : %b \n" , name , this.isAlive());
+            System.out.println("intrrupt " + name);
+        }
+        System.out.println("exit " + name);
+        System.out.printf("After exit Alive %s : %b \n" , name , this.isAlive());
     }
-    
 }
-
-
-
-public class A3 {
-    
+public class A3 {   
     public static void main(String[] args) throws InterruptedException {
-        A1 A = new A1("A1");
-        A1 A1 = new A1("A2");
-        System.out.println("A1 Alive:"+A.isAlive());
-        System.out.println("A2 Alive:"+A1.isAlive());
+        S1 A = new S1("A1");
+        S1 S1 = new S1("A2");
+        System.out.println("BEFORE Join Thread A1 Alive:"+A.isAlive());
+        System.out.println("BEFORE Join Thread A2 Alive:"+S1.isAlive());
         A.join();
-        A1.join();
-         System.out.println("A1 Alive:"+A.isAlive());
-        System.out.println("A2 Alive:"+A1.isAlive());
-       
-        
-       
+        S1.join();
+         System.out.println("After Join Thread A1 Alive:"+A.isAlive());
+        System.out.println("After Join Thread A2 Alive:"+S1.isAlive());
     }
 }
