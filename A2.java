@@ -1,51 +1,35 @@
 /**
- * lets Assume A4 extend A1 extend Thread is extendent by one Thread to Simentaniously 
+ * lets Assume T2 extend T1 extend Thread is extendent by one Thread to Simentaniously run()
  */
-class A1 extends Thread {
+class T2 extends Thread {
     private int odd;
-    
-
-    public A1(int i) {
-        this.odd = i;
-    }
-
-
+    public T2(int i) {this.odd = i;}
+    public T2() {}
     public void run()
     {
-         System.out.print(odd%2 == 0?odd+" ":"");
-         
+        for (int i = 1; i <= odd; i++) {
+        System.out.print(i%2 == 0?i+" ":"");
+        } 
     }
-    
 }
-
-class A4 extends Thread {
-
-    
+class T1 extends Thread {
+   
     private int even; 
-    public A4(int i) {
-        this.even = i;
-    }
-
+    public T1(int i) {this.even = i;}
+    public T1() {}
     public void run()
     {
-        System.out.print(even%2 != 0?even+" ":"");
-        
+        for (int i = 1; i <= even; i++) {
+        System.out.print(i%2 != 0?i+" ":"");
+        }
     }
 }
 
 public class A2 {
-    
     public static void main(String[] args) throws InterruptedException {
-        for (int i = 0; i < 20; i++) {
-            A1 A1 = new A1(i);
-            A4 A4 = new A4(i);
-            A1.start();
-            A4.start();
-            A4.join();
-            A1.join();
-        }
-        
-        
-        
+        T1 A1 = new T1(20);
+        T2 A4 = new T2(20);
+            A4.run();
+            A1.run();
     }
 }
