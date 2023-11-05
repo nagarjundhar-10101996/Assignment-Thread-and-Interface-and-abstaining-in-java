@@ -3,10 +3,7 @@ class A1 {
         InnerThreadon n = new InnerThreadon(10);
         InnerThreadonchar t = new InnerThreadonchar();
         n.start();
-          t.start();
-        n.run();
-        t.run();
-       
+        t.start();       
     }
 }
 /**
@@ -22,10 +19,7 @@ class A1 {
         for (int i = 1; i < this.n; i++) {
             System.err.printf("%d " ,i);
         }
-        
-        
     }
-    
 }
 /**
  * InnerThreadon
@@ -33,11 +27,8 @@ class A1 {
  class InnerThreadonchar extends Thread {
     public void run()
     {
-        
         for (char i = 'a'; i < '{'; i++) {
             System.err.printf("%c " ,i);
-        }
-        
-    }
-    
+        }        
+    }   
 }
